@@ -1,7 +1,11 @@
 <div id="theList" class="contact-list-container">
     <div *ngFor="let item of contacts; let i = index;" class="contact-card row align-items-center">
-
-
+        <div class="col-2 contact-field">{{ item.firstName }}</div>
+        <div class="col-2 contact-field">{{ item.lastName }}</div>
+        <div class="col-2 contact-field">{{ item.emailAddress }}</div>
+        <div class="col-2 contact-field">{{ item.phoneNumber }}</div>
+        <div class="col-2 contact-field">{{ item.status }}</div>
+        <div class="col-2 contact-field">{{ item.dob }}</div>
     </div>
 
 </div>    
