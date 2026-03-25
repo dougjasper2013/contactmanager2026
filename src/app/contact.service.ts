@@ -33,4 +33,9 @@ export class ContactService {
         )
     }
 
+    delete(contactID: any) {
+        const params = new HttpParams().set('contactID', contactID.toString());
+        return this.http.get(`${this.baseUrl}/delete`, {params: params});
+    }
+
 }

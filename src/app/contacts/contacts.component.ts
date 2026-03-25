@@ -44,4 +44,29 @@ export class ContactsComponent implements OnInit {
     );
   }
 
+  deleteContact(contactID: number): void {
+    const confirmed = window.confirm("Are you sure you want to delete thsi contact?");
+
+    if(!confirmed) {
+      return;
+    }
+
+    this.resetAlerts();
+
+    this.contactService.delete(contactID).subscribe({
+      next: () => {
+        this.contacts = this.contacts.filter(item => item.contactID && +item.contactID != +contactID);
+        this.success = "Deleted successfully";
+
+      },
+      error: err => this.error = err.message
+    });
+
+  }
+
+  resetAlerts(): void {
+    this.error =  '';
+    this.success = '';
+  }
+
 }
