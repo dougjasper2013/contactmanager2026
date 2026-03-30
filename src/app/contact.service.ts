@@ -43,4 +43,9 @@ export class ContactService {
         return this.http.put(`${this.baseUrl}/edit`, {data: contact});
     }
 
+    get(contactID: number)
+    {
+        return this.http.get<Contact>(`http://localhost/contactapi2026/view.php?contactID=${contactID}`);
+    }
+
 }

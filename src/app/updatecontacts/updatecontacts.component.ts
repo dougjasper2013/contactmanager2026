@@ -14,7 +14,7 @@ import { RouterModule, Router, ActivatedRoute } from '@angular/router';
   providers: [ContactService]
 })
 export class UpdatecontactsComponent implements OnInit {
-  contactID: number;
+  contactID: number=0;
   contact: Contact = { firstName:'', lastName:'', emailAddress:'', phoneNumber:'', status:'', dob:'' };
 
   error = '';
@@ -39,5 +39,18 @@ export class UpdatecontactsComponent implements OnInit {
     this.maxDate = `${yyyy}-${mm}-${dd}`;
 
     this.contactID = +this.route.snapshot.paramMap.get('id')!;
+
+    this.contactService.get(this.contactID).subscribe({
+      next: (data: Contact) => {
+        this.contact = data;
+      },
+      error: () => this.error = 'Error loading contact.'
+    });
   }
+
+  updateContact(form: NgForm)
+  {
+
+  }
+
 }
