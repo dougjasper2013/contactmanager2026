@@ -38,4 +38,9 @@ export class ContactService {
         return this.http.get(`${this.baseUrl}/delete`, {params: params});
     }
 
+    update(contact: Contact)
+    {
+        return this.http.put(`${this.baseUrl}/edit`, {data: contact});
+    }
+
 }
