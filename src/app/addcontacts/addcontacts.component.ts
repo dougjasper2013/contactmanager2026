@@ -15,7 +15,7 @@ import { RouterModule, Router } from '@angular/router';
 })
 export class AddcontactsComponent implements OnInit {
 
-  contact: Contact = { firstName:'', lastName:'', emailAddress:'', phoneNumber:'', status:'', dob:'' };
+  contact: Contact = { firstName:'', lastName:'', emailAddress:'', phoneNumber:'', status:'', dob:'', imageName: '' };
 
   error = '';
   success = '';
@@ -52,6 +52,14 @@ export class AddcontactsComponent implements OnInit {
   resetAlerts(): void {
     this.error = '';
     this.success = '';
+  }
+
+  onFileSelected(event: Event): void {
+
+  }
+
+  uploadFile(): void {
+    
   }
 
 }

@@ -6,4 +6,5 @@ export interface Contact {
     phoneNumber?: string;
     status?: string;
     dob?: string;
+    imageName?: string;
 }
