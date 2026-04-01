@@ -6,6 +6,10 @@
         <div class="col-2 contact-field">{{ item.phoneNumber }}</div>
         <div class="col-2 contact-field">{{ item.status }}</div>
         <div class="col-2 contact-field">{{ item.dob }}</div>
+        <div class="col-2">
+            <img class="contact-image" src="http://localhost/contactapi2026/uploads/{{item.imageName}}"
+                alt="{{item.imageName}}" />
+        </div>
 
         <div class="col-2 d-flex gap-2">
             <button class="btn btn-success btn-sm" [routerLink]="['/update', item.contactID]">Update</button>

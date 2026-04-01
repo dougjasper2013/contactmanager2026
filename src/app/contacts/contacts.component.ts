@@ -17,7 +17,7 @@ export class ContactsComponent implements OnInit {
 
   title = "ContactManager2026";
   public contacts: Contact[] = [];
-  contact: Contact = { firstName:'', lastName:'', emailAddress:'', phoneNumber:'', status:'', dob:'' };
+  contact: Contact = { firstName:'', lastName:'', emailAddress:'', phoneNumber:'', status:'', dob:'', imageName:'' };
 
   error = '';
   success = '';
