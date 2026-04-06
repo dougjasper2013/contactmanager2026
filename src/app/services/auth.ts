@@ -18,4 +18,8 @@ export class Auth {
         return this.http.post<any>(`${this.baseUrl}register.php`, user);
     }
 
+    checkAuth() {
+        return this.http.get<any>(`${this.baseUrl}checkAuth.php`);
+    }
+
 }
