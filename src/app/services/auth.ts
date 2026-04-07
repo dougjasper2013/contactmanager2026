@@ -9,17 +9,40 @@ import { Router } from '@angular/router';
 export class Auth {
     baseUrl = 'http://localhost/contactapi2026/';
 
+    isAuthenticated = false;
+
     constructor(private http: HttpClient, private router: Router)
     {
         // no statements required
+    }
+
+    login(user: any) {
+        return this.http.post<any>(`${this.baseUrl}login.php`, user); 
     }
 
     register(user: any) {
         return this.http.post<any>(`${this.baseUrl}register.php`, user);
     }
 
+    logout() {
+        this.http.get(`${this.baseUrl}logout.php`).subscribe(() => {
+            this.isAuthenticated = false;
+            localStorage.removeItem('auth');
+            this.router.navigate(['/login']);
+        }); 
+    }
+
     checkAuth() {
-        return this.http.get<any>(`${this.baseUrl}checkAuth.php`);
+        return this.http.get<any>(`${this.baseUrl}checkAuth.php`);           
+    }
+
+    setAuth(auth: boolean) {
+        this.isAuthenticated = auth;
+        localStorage.setItem('auth', auth ? 'true' : 'false');
+    }
+
+    getAuth(): boolean {        
+        return localStorage.getItem('auth') == 'true';
     }
 
 }
