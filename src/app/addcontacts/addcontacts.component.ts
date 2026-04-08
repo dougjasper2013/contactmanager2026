@@ -5,6 +5,7 @@ import { HttpClient, HttpClientModule} from '@angular/common/http';
 import { Contact } from '../contact';
 import { ContactService } from '../contact.service';
 import { RouterModule, Router } from '@angular/router';
+import { Auth } from '../services/auth';
 
 @Component({
   selector: 'app-addcontacts',
@@ -20,18 +21,20 @@ export class AddcontactsComponent implements OnInit {
   selectedFile: File | null = null;
   error = '';
   success = '';
+  userName = '';
 
   constructor(
     private contactService: ContactService,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    public authService: Auth
   )
   {
 
   }
 
   ngOnInit(): void {
-    
+    this.userName = localStorage.getItem('username') || 'Guest';
   }
 
   addContact(f: NgForm) {

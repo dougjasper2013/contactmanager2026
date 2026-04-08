@@ -22,6 +22,7 @@ export class ContactsComponent implements OnInit {
 
   error = '';
   success = '';
+  userName = '';
 
   constructor(private contactService: ContactService, private http: HttpClient, public authService: Auth) {
 
@@ -29,6 +30,7 @@ export class ContactsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getContacts();
+    this.userName = localStorage.getItem('username') || 'Guest';
   }
 
   getContacts(): void {

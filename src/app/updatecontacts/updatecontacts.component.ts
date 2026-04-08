@@ -5,6 +5,7 @@ import { HttpClient, HttpClientModule, HttpErrorResponse} from '@angular/common/
 import { Contact } from '../contact';
 import { ContactService } from '../contact.service';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
+import { Auth } from '../services/auth';
 
 @Component({
   selector: 'app-updatecontacts',
@@ -20,12 +21,14 @@ export class UpdatecontactsComponent implements OnInit {
   error = '';
   success = '';
   maxDate: string = '';
+  userName = '';
 
   constructor(
     private route: ActivatedRoute,
     private contactService: ContactService,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    public authService: Auth
   )
   {
 
@@ -46,6 +49,8 @@ export class UpdatecontactsComponent implements OnInit {
       },
       error: () => this.error = 'Error loading contact.'
     });
+
+    this.userName = localStorage.getItem('username') || 'Guest';
   }
 
   updateContact(form: NgForm)
