@@ -26,6 +26,7 @@ export class LoginComponent {
   login() {
     this.auth.login({userName: this.userName, password: this.password}).subscribe({
       next: res => {
+        console.log("Inside login.component.ts res");
         if (res.success) {
           this.clearLockoutTimer();
           this.auth.setAuth(true);
@@ -39,6 +40,7 @@ export class LoginComponent {
       error: err => {
         // Default message
         this.errorMessage = 'Server error during login. Please try again.';
+        console.log("Inside login.component.ts error: err");
 
         if (err.status === 403) {
           // Account locked: Extract minutes from backend message

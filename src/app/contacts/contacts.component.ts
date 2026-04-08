@@ -4,6 +4,7 @@ import { Contact } from '../contact';
 import { ContactService } from '../contact.service';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule} from '@angular/common/http';
+import { Auth } from '../services/auth';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class ContactsComponent implements OnInit {
   error = '';
   success = '';
 
-  constructor(private contactService: ContactService, private http: HttpClient) {
+  constructor(private contactService: ContactService, private http: HttpClient, public authService: Auth) {
 
   }
 
